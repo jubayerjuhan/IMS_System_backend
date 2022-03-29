@@ -29,24 +29,10 @@ exports.addSale = catchAsyncError(async (req, res, next) => {
   }
 
 
-  saleItems.forEach(item => {
+  req?.body?.saleItems?.forEach(item => {
     changeStock(item);
   });
-  const sale = new Sale({
-    customerType,
-    name,
-    purchasePrice,
-    paymentMethod,
-    saleItems,
-    priceBreakdown,
-    note,
-    phone,
-    address,
-    lotNumber,
-    localBrand,
-    typeOfSack,
-    saleDate,
-  });
+  const sale = new Sale(req.body);
   await sale.save();
   res.status(201).json({
     success: true,
