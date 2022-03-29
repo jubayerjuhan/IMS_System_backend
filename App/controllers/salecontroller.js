@@ -12,6 +12,12 @@ exports.addSale = catchAsyncError(async (req, res, next) => {
     saleItems,
     priceBreakdown,
     note,
+    phone,
+    address,
+    lotNumber,
+    localBrand,
+    typeOfSack,
+    saleDate,
   } = req.body;
 
 
@@ -33,7 +39,13 @@ exports.addSale = catchAsyncError(async (req, res, next) => {
     paymentMethod,
     saleItems,
     priceBreakdown,
-    note
+    note,
+    phone,
+    address,
+    lotNumber,
+    localBrand,
+    typeOfSack,
+    saleDate,
   });
   await sale.save();
   res.status(201).json({
