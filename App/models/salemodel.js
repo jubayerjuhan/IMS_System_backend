@@ -12,7 +12,26 @@ const saleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
+  phone: {
+    type: Number,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  localBrand: {
+    type: String,
+    required: true,
+  },
+  typeOfSack: {
+    type: String,
+    required: true,
+  },
+  lotNumber: {
+    type: String,
+    required: true,
+  },
   saleItems: [
     {
       product: {
