@@ -32,6 +32,10 @@ const saleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  saleDate: {
+    type: Date,
+    required: true,
+  },
   saleItems: [
     {
       product: {
