@@ -23,10 +23,9 @@ exports.addExpense = catchAsyncError(async (req, res, next) => {
 
   const changeLotNumber = (item) => {
     const product = Product.findById(item.product);
-    const lotNumber = parseInt(product.lotNumber) + 1;
+    const lotNumber = product.lotNumber ? parseInt(product.lotNumber) : 0 + 1;
     product.lotNumber = lotNumber;
     product.save();
-
   }
 
   recivedItems.forEach(item => {
