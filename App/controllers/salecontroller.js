@@ -13,6 +13,7 @@ exports.addSale = catchAsyncError(async (req, res, next) => {
     priceBreakdown,
     note,
     phone,
+    soldBy,
     address,
     lotNumber,
     localBrand,

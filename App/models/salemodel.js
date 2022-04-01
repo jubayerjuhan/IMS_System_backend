@@ -12,6 +12,10 @@ const saleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  soldBy: {
+    type: String,
+    required: true,
+  },
   phone: {
     type: Number,
     required: true,
