@@ -10,6 +10,7 @@ exports.addExpense = catchAsyncError(async (req, res, next) => {
     discount,
     totalAmount,
     recivedItems,
+    transportCost,
     localBrand
   } = req.body;
 
@@ -21,10 +22,11 @@ exports.addExpense = catchAsyncError(async (req, res, next) => {
     await product.save();
   }
 
-  const changeLotNumber = (item) => {
-    const product = Product.findById(item.product);
-    const lotNumber = product.lotNumber ? parseInt(product.lotNumber) : 0 + 1;
+  const changeLotNumber = async (item) => {
+    const product = await Product.findById(item.product);
+    const lotNumber = product.lotNumber + 1;
     product.lotNumber = lotNumber;
+    console.log(product, 'product');
     product.save();
   }
 
@@ -38,7 +40,8 @@ exports.addExpense = catchAsyncError(async (req, res, next) => {
     discount,
     totalAmount,
     recivedItems,
-    localBrand
+    localBrand,
+    transportCost
   }).save();
 
   res.status(201).json({
